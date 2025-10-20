@@ -88,7 +88,11 @@ def display_project_card(project, index):
         # Project image
         image = load_image(project['photo'])
         if image:
-            st.image(image, width=200, use_container_width=True)
+            if isinstance(image, str):  # URL
+                st.image(image, width=200,use_container_width=True)
+            else:  # PIL Image
+                st.image(image, width=200, use_container_width=True)
+            
             st.markdown("""
                     <style>
                     .stImage img {
