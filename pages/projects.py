@@ -140,7 +140,7 @@ def display_project_details(project):
             for feature in features:
                 st.write(f"• {feature.strip()}")
 
-def main():
+def show_projects():
     st.title("🚀 My Software Projects Portfolio")
     st.markdown("Browse through my collection of 40+ software projects")
     
@@ -199,4 +199,4 @@ def main():
         st.info("No projects match your current filters. Try adjusting your search criteria.")
 
 if __name__ == "__main__":
-    main()
+    show_projects()
