@@ -55,6 +55,10 @@ def load_projects_data():
 
 def load_image(image_path):
     """Load image from local path or URL"""
+    print( image_path)
+    if not image_path or image_path == 0:
+        image_path = "images/default.jpg"
+    image_path = "images/" + image_path
     try:
         if image_path.startswith('http'):
             # For URL images
@@ -84,11 +88,15 @@ def display_project_card(project, index):
         # Project image
         image = load_image(project['photo'])
         if image:
-            if isinstance(image, str):  # URL
-                st.image(image, use_column_width=True)
-            else:  # PIL Image
-                st.image(image, use_column_width=True)
-        
+            st.image(image, width=200, use_container_width=True)
+            st.markdown("""
+                    <style>
+                    .stImage img {
+                        width: 100% !important;
+                    }
+                    </style>
+                """, unsafe_allow_html=True)
+
         # Short description (truncated)
         short_desc = project['description'][:100] + "..." if len(project['description']) > 100 else project['description']
         st.write(short_desc)
@@ -110,11 +118,15 @@ def display_project_details(project):
         # Project image
         image = load_image(project['photo'])
         if image:
-            if isinstance(image, str):  # URL
-                st.image(image, use_column_width=True)
-            else:  # PIL Image
-                st.image(image, use_column_width=True)
-        
+            st.image(image,  use_container_width=True)
+            st.markdown("""
+                    <style>
+                    .stImage img {
+                        width: 100% !important;
+                    }
+                    </style>
+                """, unsafe_allow_html=True)
+
         # Project metadata
         st.subheader("Project Info")
         st.write(f"**Type:** {project['Project Type']}")

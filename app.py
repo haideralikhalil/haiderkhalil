@@ -1,6 +1,6 @@
 import streamlit as st 
 from pages import projects 
-from pages import  test
+
 
 st.title("Haider Ali Khalil")
 
